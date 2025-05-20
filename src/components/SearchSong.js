@@ -1,6 +1,19 @@
-function SearchSong({ song, onClick }) {
-  return (
-  <h2>SearchSong</h2>
+import { useState } from "react";
+
+function SearchSong({ onSearch }) {
+    const [query, setQuery] = useState("")
+    
+    const handleSearch = () => {
+        onSearch(query);
+        setQuery("")
+    }
+
+    return (
+    <div>
+        <h2>Search for your favorite songs! </h2>
+        <input type="text" value={query} placeholder="search for songs" onChange={(e) => setQuery(e.target.value)} />
+        <button onClick={handleSearch}>Search</button>
+    </div>
 )
 }
 
