@@ -8,7 +8,6 @@ function App() {
     <div>
       <h1>My React App</h1>
       <SearchSong onSearch={handleSearch} />
-    
    
     </div>
   );
