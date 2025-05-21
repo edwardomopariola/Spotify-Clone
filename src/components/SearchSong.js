@@ -10,9 +10,9 @@ function SearchSong({ onSearch }) {
 
     return (
     <div>
-        <h2>Search for your favorite songs! or favorite artists </h2>
-        <input type="text" value={query} placeholder="search for songs" onChange={(e) => setQuery(e.target.value)} />
-        <button onClick={handleSearch}>Search</button>
+        <h3 className="h2">Search for your favorite songs! or favorite artists </h3>
+        <input className='input-field' type="text" value={query} placeholder="search for songs" onChange={(e) => setQuery(e.target.value)} />
+        <button className='search-button' onClick={handleSearch}>Search</button>
     </div>
 )
 }

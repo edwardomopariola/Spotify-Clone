@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+body {
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(11, 49, 58);
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 255, 255);
+}
+
+.App {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(131, 15, 15, 0.1);
+    background-color: rgb(20, 41, 25);
+}
+
+.h1 {
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.results-container {
+    display: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: rgb(157, 163, 133);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(131, 15, 15, 0.1);
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: rgb(57, 66, 23);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(131, 15, 15, 0.1);
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.p {
+    font-size: 16px;
+    color: white;
+    margin: 5px 0;
+}
+
+.link-to {
+    color: #0056b3;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 5px 0;
+}
+.link-to:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.h3 {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 10px;
+    /* text-align: center; */
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.input-field {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: white
+}

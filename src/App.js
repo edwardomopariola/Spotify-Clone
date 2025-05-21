@@ -3,6 +3,7 @@
 import { useState } from 'react';  // Import React hooks for state and effect management
 import SearchSong from "./components/SearchSong";
 import SearchTrack from "./components/SearchTrack";
+import './index.css';  // Import the CSS file for styling
 
 function App() {
   const [query, setQuery] = useState("");  // State to store the search query
@@ -17,22 +18,23 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="App">
+      <h1 className='h1'>Spotify Music App</h1>
       <SearchSong onSearch={handleSearch} />  {/* Pass the handleSearch function to the SearchSong component */}
-      <h1>Spotify Music App</h1>
-        <div>
+     
+      <div className="results-container">
           {tracks.map((track) => (
-            <div key={track.id}>
-              <img src={track.album.images[0].url} alt={track.name} />
-              <p>{track.album.name}</p>
-              <p>{track.album.release_date}</p>
+            <div className="output" key={track.id}>
+              <img className='profile-image' src={track.album.images[0].url} alt={track.name} />
+              <p className='name'>{track.album.name}</p>
+              <p className='date'>{track.album.release_date}</p>
               <p>{track.album.artists.map((artist) => artist.name).join(", ")}</p>  
-              <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+              <a className="link-to" href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
                 {track.name} - {track.artists.map((artist) => artist.name).join(", ")}
               </a>
             </div>
           ))}
-        </div>
+      </div>
     </div>
   );
 }
