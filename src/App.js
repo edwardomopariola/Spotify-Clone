@@ -11,7 +11,7 @@ function App() {
   // const [error, setError] = useState(null);  // State to store any error messages
   
   const handleSearch = async (query) => {
-    const results = await SearchTrack();  // Call the searchTrack function with the query
+    const results = await SearchTrack(query);  // Call the searchTrack function with the query
     setResults(results);  // Update the results state with the search results
     setQuery("");  // Clear the search input
   }
