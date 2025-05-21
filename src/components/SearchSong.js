@@ -10,7 +10,7 @@ function SearchSong({ onSearch }) {
 
     return (
     <div>
-        <h2>Search for your favorite songs! </h2>
+        <h2>Search for your favorite songs! or favorite artists </h2>
         <input type="text" value={query} placeholder="search for songs" onChange={(e) => setQuery(e.target.value)} />
         <button onClick={handleSearch}>Search</button>
     </div>
