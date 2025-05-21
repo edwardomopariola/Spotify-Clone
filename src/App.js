@@ -6,31 +6,33 @@ import SearchTrack from "./components/SearchTrack";
 
 function App() {
   const [query, setQuery] = useState("");  // State to store the search query
-  const [results, setResults] = useState([]);  // State to store search results
+  const [tracks, setTracks] = useState([]);  // State to store search results
   // const [accessToken, setAccessToken] = useState("");   // State to store the access token
   // const [error, setError] = useState(null);  // State to store any error messages
   
   const handleSearch = async (query) => {
     const results = await SearchTrack(query);  // Call the searchTrack function with the query
-    setResults(results);  // Update the results state with the search results
+    setTracks(results);  // Update the results state with the search results
     setQuery("");  // Clear the search input
   }
 
   return (
     <div>
-      <h1>Spotify Search App</h1>
       <SearchSong onSearch={handleSearch} />  {/* Pass the handleSearch function to the SearchSong component */}
-      {/* {error && <p>Error: {error}</p>}  Display any error messages */}
-      {results.length > 0 && (
-        <ul>
-          {results.map((track) => (
-            <li key={track.id}>
+      <h1>Spotify Music App</h1>
+        <div>
+          {tracks.map((track) => (
+            <div key={track.id}>
               <img src={track.album.images[0].url} alt={track.name} />
-              <p>{track.name} by {track.artists[0].name}</p>
-            </li>
+              <p>{track.album.name}</p>
+              <p>{track.album.release_date}</p>
+              <p>{track.album.artists.map((artist) => artist.name).join(", ")}</p>  
+              <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+                {track.name} - {track.artists.map((artist) => artist.name).join(", ")}
+              </a>
+            </div>
           ))}
-        </ul>
-      )}
+        </div>
     </div>
   );
 }
