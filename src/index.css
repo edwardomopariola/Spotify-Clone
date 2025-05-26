@@ -89,11 +89,11 @@ body {
     color: #0056b3;
 }
 
-.h3 {
-    font-size: 24px;
+.h2 {
+    font-size: 20px;
     color: white;
     margin-bottom: 10px;
-    /* text-align: center; */
+    text-align: center; 
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
 }

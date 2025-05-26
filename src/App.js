@@ -4,6 +4,7 @@ import { useState } from 'react';  // Import React hooks for state and effect ma
 import SearchSong from "./components/SearchSong";
 import SearchTrack from "./components/SearchTrack";
 import './index.css';  // Import the CSS file for styling
+// import getEnv from "./env";  // Import the environment variables 
 
 function App() {
   const [query, setQuery] = useState("");  // State to store the search query
@@ -21,7 +22,7 @@ function App() {
     <div className="App">
       <h1 className='h1'>Spotify Music App</h1>
       <SearchSong onSearch={handleSearch} />  {/* Pass the handleSearch function to the SearchSong component */}
-     
+      {/* <getEnv /> */}
       <div className="results-container">
           {tracks.map((track) => (
             <div className="output" key={track.id}>
