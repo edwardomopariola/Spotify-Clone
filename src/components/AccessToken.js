@@ -1,23 +1,32 @@
+
+// async function getAccessToken() {
+//     const data = new URLSearchParams({
+//         grant_type: "client_credentials",
+//         client_id: process.env.REACT_APP_SPOTIFY_API_KEY, // Ensure it's correctly loaded
+//         client_secret: process.env.REACT_APP_SPOTIFY_API_SECRET // Ensure it's correctly loaded
+//     });
+
+//     const response = await axios.post("https://accounts.spotify.com/api/token", data.toString(), {
+//         headers: {
+//             "Content-Type": "application/x-www-form-urlencoded"
+//         }
+//     });
+
+//     return response.data.access_token;
+//     console.log("API Key:", process.env.REACT_APP_SPOTIFY_API_KEY);
+//     console.log("API Secret:", process.env.REACT_APP_SPOTIFY_API_SECRET);
+
+// }
 import axios from "axios";
-// import getEnv from "../env";
 
-// const client_id = "693a3b52b21d4ee8bcdc44617f629321";
-// const client_secret = "8e4b1d7609b14df0b03d17ff7d328886";
-// const redirectURI = "http://localhost:3000/callback";
-// const authURL = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=code&redirect_uri=${redirectURI}&scope=user-read-private%20user-read-email`;
+const getAccessToken = async () => {
+    try {
+        const response = await axios.get("http://localhost:5000/getSpotifyToken");
+        return response.data.access_token;
+    } catch (error) {
+        console.error("Error fetching access token:", error.response?.data || error.message);
+        return null;
+    }
+};
 
-async function getAccessToken() {   // Function to get the access token
-    const response = await axios.post("https://accounts.spotify.com/api/token",{
-        grant_type: "client_credentials",  // Grant type for client credentials
-        client_id: "693a3b52b21d4ee8bcdc44617f629321",  // Client ID from environment variables
-        client_secret: "8e4b1d7609b14df0b03d17ff7d328886",  // Client secret from environment variables
-    }, {
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        },
-      
-    );
-    
-    return response.data.access_token;
-}
-
-export default getAccessToken;  // Export the function 
+export default getAccessToken;
