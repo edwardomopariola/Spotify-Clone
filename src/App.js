@@ -1,5 +1,3 @@
-// import axios from 'axios';  // Import axios for making HTTP requests
-// import getAccessToken from './components/AccessToken';  // Import the function to get the access token
 import { useState } from 'react';  // Import React hooks for state and effect management
 import SearchSong from "./components/SearchSong";
 import SearchTrack from "./components/SearchTrack";
@@ -8,14 +6,14 @@ import './index.css';  // Import the CSS file for styling
 function App() {
   const [query, setQuery] = useState("");  // State to store the search query
   const [tracks, setTracks] = useState([]);  // State to store search results
-  // const [accessToken, setAccessToken] = useState("");   // State to store the access token
-  // const [error, setError] = useState(null);  // State to store any error messages
+  
   
   const handleSearch = async (query) => {
     try {
       const results = await SearchTrack(query);  // Call the searchTrack function with the query
       setTracks(results || []);  // Update the results state with the search results
       setQuery("");  // Clear the search input
+      
     } catch (error) {
       console.error("Error fetching tracks:", error);  // Log any errors to the console
       // setError("Failed to fetch tracks. Please try again.");  // Optionally set an error message

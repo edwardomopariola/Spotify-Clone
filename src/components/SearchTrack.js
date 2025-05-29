@@ -1,5 +1,5 @@
 import axios from "axios";
-import getAccessToken from "./AccessToken"; // Ensure correct import case
+import getAccessToken from "./AccessToken"; // Import the function to get the Spotify access token
 
 const searchTrack = async (query) => {
     try {

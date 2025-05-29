@@ -1,31 +1,14 @@
-
-// async function getAccessToken() {
-//     const data = new URLSearchParams({
-//         grant_type: "client_credentials",
-//         client_id: process.env.REACT_APP_SPOTIFY_API_KEY, // Ensure it's correctly loaded
-//         client_secret: process.env.REACT_APP_SPOTIFY_API_SECRET // Ensure it's correctly loaded
-//     });
-
-//     const response = await axios.post("https://accounts.spotify.com/api/token", data.toString(), {
-//         headers: {
-//             "Content-Type": "application/x-www-form-urlencoded"
-//         }
-//     });
-
-//     return response.data.access_token;
-//     console.log("API Key:", process.env.REACT_APP_SPOTIFY_API_KEY);
-//     console.log("API Secret:", process.env.REACT_APP_SPOTIFY_API_SECRET);
-
-// }
 import axios from "axios";
 
-const getAccessToken = async () => {
+const getAccessToken = async () => {   // Function to fetch the Spotify access token from the server
+    // This function makes a GET request to the server endpoint that provides the Spotify access token
     try {
         const response = await axios.get("http://localhost:5000/getSpotifyToken");
         return response.data.access_token;
-    } catch (error) {
+
+    } catch (error) {  // Catch any errors that occur during the request
         console.error("Error fetching access token:", error.response?.data || error.message);
-        return null;
+        return null;  // Return null if there's an error fetching the token
     }
 };
 
