@@ -1,19 +1,18 @@
 import { useState } from 'react';  // Import React hooks for state and effect management
 import SearchSong from "./components/SearchSong";
-import SearchTrack from "./components/SearchTrack";
+import SearchTrack from "./utils/SearchTrack";
 import './index.css';  // Import the CSS file for styling
 
 function App() {
   const [query, setQuery] = useState("");  // State to store the search query
-  const [tracks, setTracks] = useState([]);  // State to store search results
-  
+  const [tracks, setTracks] = useState([]);  // State to store search result
   
   const handleSearch = async (query) => {
     try {
       const results = await SearchTrack(query);  // Call the searchTrack function with the query
       setTracks(results || []);  // Update the results state with the search results
       setQuery("");  // Clear the search input
-      
+
     } catch (error) {
       console.error("Error fetching tracks:", error);  // Log any errors to the console
       // setError("Failed to fetch tracks. Please try again.");  // Optionally set an error message
