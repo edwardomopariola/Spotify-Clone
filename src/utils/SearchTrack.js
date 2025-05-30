@@ -1,9 +1,10 @@
 import axios from "axios";
-import getAccessToken from "./AccessToken"; // Import the function to get the Spotify access token
+import getAccessToken from "./accessToken";
 
 const searchTrack = async (query) => {
     try {
         const token = await getAccessToken();
+        console.log("Access Token:", token); // Log the access token for debugging
         const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track`;
 
         const response = await axios.get(url, {

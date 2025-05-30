@@ -1,6 +1,6 @@
 import { useState } from 'react';  // Import React hooks for state and effect management
 import SearchSong from "./components/SearchSong";
-import SearchTrack from "./utils/SearchTrack";
+import searchTrack from "./utils/searchTrack";  // Import the searchTrack function to perform the search
 import './index.css';  // Import the CSS file for styling
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   
   const handleSearch = async (query) => {
     try {
-      const results = await SearchTrack(query);  // Call the searchTrack function with the query
+      const results = await searchTrack(query);  // Call the searchTrack function with the query
       setTracks(results || []);  // Update the results state with the search results
       setQuery("");  // Clear the search input
 
