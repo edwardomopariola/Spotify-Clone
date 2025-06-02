@@ -36,7 +36,6 @@ app.get("/getSpotifyToken", async (req, res) => {   // Endpoint to get the Spoti
         res.status(error.response?.status || 500).json({ error: error.response?.data || error.message });
     }
 });
-
 app.listen(5000, () => console.log(`Server running on port ${PORT}`));   
 // This server provides an endpoint to get the Spotify access token.
 // You can call this endpoint from your React app to get the token securely.

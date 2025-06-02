@@ -16,5 +16,4 @@ function SearchSong({ onSearch }) {
         </div>
     );
 }
-
 export default SearchSong;
