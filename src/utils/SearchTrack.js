@@ -21,5 +21,4 @@ const searchTrack = async (query) => {
     }
 };
 
-
 export default searchTrack; // Export the function to be used in other components
