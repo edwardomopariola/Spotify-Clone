@@ -2,6 +2,8 @@ import { useState } from 'react';  // Import React hooks for state and effect ma
 import SearchSong from "./components/SearchSong";
 import searchTrack from "./utils/searchTrack";  // Import the searchTrack function to perform the search
 import './index.css';  // Import the CSS file for styling
+import { backendUrl } from './config'; // Import the backend URL from the config file
+
 
 function App() {
   const [query, setQuery] = useState("");  // State to store the search query
@@ -9,7 +11,11 @@ function App() {
   
   const handleSearch = async (query) => {
     try {
-      const results = await searchTrack(query);  // Call the searchTrack function with the query
+      const response = await fetch(`${backendUrl}/getSpotifyToken`);
+      const tokenData = await response.json();
+      console.log("Token Data:", tokenData);
+
+      const results = await searchTrack(query, tokenData.access_token); // Pass the token to searchTrack
       setTracks(results || []);  // Update the results state with the search results
       setQuery("");  // Clear the search input
 

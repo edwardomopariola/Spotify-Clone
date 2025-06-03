@@ -1,0 +1,1 @@
+export const backendUrl = "http://spotify-clone.herokuapp.com";  // URL of the backend server where the Spotify access token is fetched
