@@ -9,7 +9,7 @@ const app = express();  // Create an instance of an Express application
 
 // Use CORS middleware to allow cross-origin requests
 app.use(cors({
-    origin: "http://localhost:3000",  // Allow requests from this origin (React app running on port 3000)
+    origin: "*",  // Allow requests from any origin
 }));
 
 
