@@ -6,7 +6,12 @@ require("dotenv").config();  // Load environment variables from .env file
 
 
 const app = express();  // Create an instance of an Express application
-app.use(cors());  // Use CORS middleware to allow cross-origin requests
+
+// Use CORS middleware to allow cross-origin requests
+app.use(cors({
+    origin: "http://localhost:3000",  // Allow requests from this origin (React app running on port 3000)
+}));
+
 
 app.get("/", (req, res) => {  // Root endpoint to check if the server is running
     res.json("Welcome to the Spotify API Server");
@@ -23,7 +28,8 @@ app.get("/getSpotifyToken", async (req, res) => {   // Endpoint to get the Spoti
             grant_type: "client_credentials",
         });
 
-        const response = await axios.post("https://accounts.spotify.com/api/token", data.toString(), {   // Making a POST request to Spotify's token endpoint toString() to convert URLSearchParams to a string
+        // Making a POST request to Spotify's token endpoint to get the access token
+        const response = await axios.post("https://accounts.spotify.com/api/token", data.toString(), {   
             headers: {   
                 "Authorization": authHeader,
                 "Content-Type": "application/x-www-form-urlencoded"
