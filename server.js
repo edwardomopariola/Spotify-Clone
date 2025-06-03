@@ -23,7 +23,7 @@ app.get("/getSpotifyToken", async (req, res) => {   // Endpoint to get the Spoti
             grant_type: "client_credentials",
         });
 
-        const response = await axios.post("https://accounts.spotify.com/api/token", data.toString(), {   // Making a POST request to Spotify's token endpoint
+        const response = await axios.post("https://accounts.spotify.com/api/token", data.toString(), {   // Making a POST request to Spotify's token endpoint toString() to convert URLSearchParams to a string
             headers: {   
                 "Authorization": authHeader,
                 "Content-Type": "application/x-www-form-urlencoded"
