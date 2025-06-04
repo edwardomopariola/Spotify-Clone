@@ -3,6 +3,7 @@ import SearchSong from "./components/SearchSong";
 import searchTrack from "./utils/searchTrack";  // Import the searchTrack function to perform the search
 import './index.css';  // Import the CSS file for styling
 import { backendUrl } from './config'; // Import the backend URL from the config file
+import axios from 'axios';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
   
   const handleSearch = async (query) => {
     try {
-      const response = await fetch(`${backendUrl}/getSpotifyToken`);
+      const response = await axios(`${backendUrl}/getSpotifyToken`);
       const tokenData = await response.json();
       console.log("Token Data:", tokenData);
 

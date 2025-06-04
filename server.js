@@ -9,7 +9,7 @@ const app = express();  // Create an instance of an Express application
 
 // Use CORS middleware to allow cross-origin requests
 app.use(cors({
-    origin: "*",  // Allow requests from any origin
+    origin: ["http://localhost:3000", "https://spotify-clone.herokuapp.com"],  // Allow requests from these origins
 }));
 
 
