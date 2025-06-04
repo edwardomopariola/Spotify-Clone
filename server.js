@@ -4,14 +4,12 @@ const cors = require("cors");  // Importing CORS middleware for handling cross-o
 const axios = require("axios");  // Importing axios for making HTTP requests
 require("dotenv").config();  // Load environment variables from .env file
 
-
 const app = express();  // Create an instance of an Express application
 
-// Use CORS middleware to allow cross-origin requests
+// Use CORS middleware to allow requests from localhost:3000
 app.use(cors({
-    origin: ["http://localhost:3000", "https://spotify-clone.herokuapp.com"],  // Allow requests from these origins
+    origin: "http://localhost:3000",  // Allow requests from your React frontend
 }));
-
 
 app.get("/", (req, res) => {  // Root endpoint to check if the server is running
     res.json("Welcome to the Spotify API Server");
@@ -19,29 +17,26 @@ app.get("/", (req, res) => {  // Root endpoint to check if the server is running
 
 app.get("/getSpotifyToken", async (req, res) => {   // Endpoint to get the Spotify access token
     try {
-
-        const authHeader = `Basic ${Buffer.from(   // Create a Basic Auth header using client ID and secret
+        const authHeader = `Basic ${Buffer.from(
             process.env.SPOTIFY_CLIENT_ID + ":" + process.env.SPOTIFY_CLIENT_SECRET
         ).toString("base64")}`;
 
-        const data = new URLSearchParams({   // Preparing the data to be sent in the request body
+        const data = new URLSearchParams({
             grant_type: "client_credentials",
         });
 
-        // Making a POST request to Spotify's token endpoint to get the access token
-        const response = await axios.post("https://accounts.spotify.com/api/token", data.toString(), {   
-            headers: {   
+        const response = await axios.post("https://accounts.spotify.com/api/token", data.toString(), {
+            headers: {
                 "Authorization": authHeader,
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
         });
 
         res.json(response.data);  // Sending the access token back to the client
-    } catch (error) {   // Catch any errors that occur during the request
+    } catch (error) {
         console.error("Error fetching token:", error.response?.data || error.message);
         res.status(error.response?.status || 500).json({ error: error.response?.data || error.message });
     }
 });
-app.listen(5000, () => console.log(`Server running on port ${PORT}`));   
-// This server provides an endpoint to get the Spotify access token.
-// You can call this endpoint from your React app to get the token securely.
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

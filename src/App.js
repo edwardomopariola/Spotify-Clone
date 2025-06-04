@@ -12,24 +12,21 @@ function App() {
   
   const handleSearch = async (query) => {
     try {
-      const response = await axios(`${backendUrl}/getSpotifyToken`);
-      const tokenData = await response.json();
-      console.log("Token Data:", tokenData);
+        const response = await axios(`${backendUrl}/getSpotifyToken`);
+        const tokenData = response.data; // Access the data directly
 
-      const results = await searchTrack(query, tokenData.access_token); // Pass the token to searchTrack
-      setTracks(results || []);  // Update the results state with the search results
-      setQuery("");  // Clear the search input
-
+        const results = await searchTrack(query, tokenData.access_token); // Pass the token to searchTrack
+        setTracks(results || []);  // Update the results state with the search results
+        setQuery("");  // Clear the search input
     } catch (error) {
-      console.error("Error fetching tracks:", error);  // Log any errors to the console
-      // setError("Failed to fetch tracks. Please try again.");  // Optionally set an error message
+        console.error("Error fetching tracks:", error);  // Log any errors to the console
     }
   }
 
   return (
     <div className="App">
       <h1 className='h1'>Spotify Music App</h1>
-      <SearchSong onSearch={handleSearch} />  {/* Pass the handleSearch function to the SearchSong component */}
+      <SearchSong onSearch={handleSearch} query={query}    />  {/* Pass the handleSearch function to the SearchSong component */}
       <div className="results-container">
           {tracks.map((track) => (
             <div className="output" key={track.id}>
