@@ -1,4 +1,4 @@
-const PORT = 5000;  // Port number for the server to listen on
+const PORT = process.env.PORT || 5000;  // Set the port for the server, defaulting to 5000 if not specified in environment variables
 const express = require("express");   // Importing required modules
 const cors = require("cors");  // Importing CORS middleware for handling cross-origin requests
 const axios = require("axios");  // Importing axios for making HTTP requests
@@ -8,7 +8,7 @@ const app = express();  // Create an instance of an Express application
 
 // Use CORS middleware to allow requests from localhost:3000
 app.use(cors({
-    origin: "http://localhost:3000",  // Allow requests from your React frontend
+    origin: ["http://localhost:3000", "https://spotify-clone-fcea296113be.herokuapp.com"]  // Allow requests from your React frontend
 }));
 
 app.get("/", (req, res) => {  // Root endpoint to check if the server is running
