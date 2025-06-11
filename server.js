@@ -7,6 +7,7 @@ require("dotenv").config();  // Load environment variables from .env file
 
 const app = express();  // Create an instance of an Express application
 
+
 // Use CORS middleware to allow requests from localhost:3000 and Heroku frontend
 app.use(cors({
     origin: ["http://localhost:3000", "https://spotify-clone-fcea296113be.herokuapp.com"],
@@ -46,8 +47,8 @@ app.get("/getSpotifyToken", async (req, res) => {
 });
 
 // Handle React routing, return all requests to React app
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "build", "index.html"));
+app.get("/user/:id", (req, res) => {
+    res.sendFile(`User ID: ${req.params.id}`)
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
