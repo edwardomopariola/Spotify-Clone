@@ -48,7 +48,7 @@ app.get("/getSpotifyToken", async (req, res) => {
 
 // Handle React routing, return all requests to React app
 app.get("/user/:id", (req, res) => {
-    res.sendFile(`User ID: ${req.params.id}`)
+    res.send(`User ID: ${req.params.id}`)
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
