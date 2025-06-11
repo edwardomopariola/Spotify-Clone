@@ -12,7 +12,6 @@ function App() {
   
   const handleSearch = async (query) => {
     try {
-        console.log("Making request to:", `${backendUrl}/getSpotifyToken`);
         const response = await axios(`${backendUrl}/getSpotifyToken`);
         const tokenData = response.data; // Access the data directly
 
