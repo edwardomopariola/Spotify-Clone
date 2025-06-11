@@ -9,7 +9,7 @@ const app = express();  // Create an instance of an Express application
 
 // Use CORS middleware to allow requests from localhost:3000 and Heroku frontend
 app.use(cors({
-    origin: ["http://localhost:3000", "https://spotify-clone-fcea296113be.herokuapp.com"]
+    origin: ["http://localhost:3000", "https://spotify-clone-fcea296113be.herokuapp.com"],
 }));
 
 // Serve static files from the React app
@@ -47,7 +47,7 @@ app.get("/getSpotifyToken", async (req, res) => {
 
 // Handle React routing, return all requests to React app
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
