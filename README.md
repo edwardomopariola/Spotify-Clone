@@ -1,7 +1,7 @@
 ## Quick Start 🚀
 
 ### 1. Clone the Repository
-Download the project using: git clone https://github.com/YOUR_USERNAME/Spotify-Clone.git cd Spotify-Clone
+Download the project using: git clone https://github.com/edwardomopariola/Spotify-Clone.git cd Spotify-Clone
 
 ### 2. Install Dependencies
 Ensure all required packages are installed: npm install
